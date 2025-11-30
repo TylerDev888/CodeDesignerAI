@@ -1,9 +1,12 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35527.113 d17.12
+VisualStudioVersion = 17.12.35527.113
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{30954960-9C80-4A42-9B1A-25823B0D794A}"
+	ProjectSection(SolutionItems) = preProject
+		Start.ps1 = Start.ps1
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeDesigner.ConsoleApp", "CodeDesigner.ConsoleApp\CodeDesigner.ConsoleApp.csproj", "{FADA5B9E-0E47-41B7-B4A9-98BF882A33A2}"
 EndProject
@@ -12,6 +15,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeDesigner.Library", "CodeDesigner.Library\CodeDesigner.Library.csproj", "{2F8474D4-536C-4B9E-815C-7EC724DAE179}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeDesigner.UnitTests", "CodeDesigner.UnitTests\CodeDesigner.UnitTests.csproj", "{E8BC24E0-A79D-4247-92A1-97954D239B1E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeDesigner.OpenAI", "CodeDesigner.OpenAI\CodeDesigner.OpenAI.csproj", "{FD04D4D4-ADDA-49F5-8D87-9A069BA9C5D5}"
+EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "CodeDesigner.UI", "CodeDesigner.UI\CodeDesigner.UI.esproj", "{FD12C62F-799E-46E0-A468-ECDA58348027}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeDesigner.WebAPI", "CodeDesigner.API\CodeDesigner.WebAPI.csproj", "{856D34D1-CBD2-45DE-9549-4597DB69AD4E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +44,20 @@ Global
 		{E8BC24E0-A79D-4247-92A1-97954D239B1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E8BC24E0-A79D-4247-92A1-97954D239B1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E8BC24E0-A79D-4247-92A1-97954D239B1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD04D4D4-ADDA-49F5-8D87-9A069BA9C5D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD04D4D4-ADDA-49F5-8D87-9A069BA9C5D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD04D4D4-ADDA-49F5-8D87-9A069BA9C5D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD04D4D4-ADDA-49F5-8D87-9A069BA9C5D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD12C62F-799E-46E0-A468-ECDA58348027}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD12C62F-799E-46E0-A468-ECDA58348027}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD12C62F-799E-46E0-A468-ECDA58348027}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{FD12C62F-799E-46E0-A468-ECDA58348027}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD12C62F-799E-46E0-A468-ECDA58348027}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD12C62F-799E-46E0-A468-ECDA58348027}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{856D34D1-CBD2-45DE-9549-4597DB69AD4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{856D34D1-CBD2-45DE-9549-4597DB69AD4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{856D34D1-CBD2-45DE-9549-4597DB69AD4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{856D34D1-CBD2-45DE-9549-4597DB69AD4E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

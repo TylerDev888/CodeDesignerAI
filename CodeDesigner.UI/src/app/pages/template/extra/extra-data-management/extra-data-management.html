@@ -1,0 +1,183 @@
+<div class="h-100">
+	<div class="app-content-padding px-4 py-3">
+		<div class="d-lg-flex mb-lg-3 mb-2">
+			<h1 class="page-header mb-0 flex-1">Disassembler</h1>
+			<span class="d-none d-lg-flex align-items-center">
+				<a class="btn btn-secondary btn-sm d-flex me-2 pe-3 rounded-3" (click)="send()">
+					<span class="iconify fs-18px me-2 ms-n1" data-icon="solar:printer-bold-duotone"></span>
+					File Manager
+				</a>
+				<a href="#" class="btn btn-secondary btn-sm d-flex me-2 pe-3 rounded-3">
+					<span class="iconify fs-18px me-2 ms-n1" data-icon="solar:archive-down-minimlistic-bold-duotone"></span>
+					Export .Bin
+				</a>
+				<a href="#" class="btn btn-theme btn-sm d-flex pe-3 rounded-3">
+					<span class="iconify fs-18px me-2 ms-n1" data-icon="solar:refresh-bold-duotone"></span>
+					Export .cds
+				</a>
+			</span>
+		</div>
+		<div class="row gx-2 pb-10px">
+			<div class="col-lg-4">
+				<div class="position-relative">
+					<input type="text" class="form-control ps-35px rounded-3" placeholder="Search by products title or ID..." />
+					<button class="btn position-absolute start-0 top-0 shadow-none"><i class="fa fa-search fa-lg"></i></button>
+				</div>
+			</div>
+			<div class="col-lg-2 d-lg-block d-none">
+				<a href="#" class="btn btn-white d-flex align-items-center rounded-3" data-bs-toggle="dropdown">
+					<i class="far fa-lg fa-calendar me-10px text-body text-opacity-50 d-none"></i>
+					<span class="iconify fs-20px my-n1 me-2 ms-n1 text-theme" data-icon="solar:calendar-search-linear"></span>
+					Search Type
+					<i class="fa ms-auto fa-chevron-down"></i>
+				</a>
+				<ul class="dropdown-menu">
+					<li><a class="dropdown-item d-flex align-items-center" href="#"><span class="iconify fs-20px my-n1 me-2 ms-n1 text-body text-opacity-50" data-icon="solar:calendar-line-duotone"></span> Address</a></li>
+					<li><a class="dropdown-item d-flex align-items-center" href="#"><span class="iconify fs-20px my-n1 me-2 ms-n1 text-body text-opacity-50" data-icon="solar:calendar-line-duotone"></span> Jump To Label</a></li>
+					<li><a class="dropdown-item d-flex align-items-center" href="#"><span class="iconify fs-20px my-n1 me-2 ms-n1 text-body text-opacity-50" data-icon="solar:calendar-line-duotone"></span> Hex pattern match</a></li>
+					<li><a class="dropdown-item d-flex align-items-center" href="#"><span class="iconify fs-20px my-n1 me-2 ms-n1 text-body text-opacity-50" data-icon="solar:calendar-line-duotone"></span> String search</a></li>
+				</ul>
+			</div>
+			<div class="col-lg-2 d-lg-block d-none">
+				<a href="#" class="btn btn-white d-flex align-items-center rounded-3" data-bs-toggle="dropdown">
+					<i class="fa fa-lg fa-tags me-10px text-body text-opacity-50 d-none"></i>
+					<span class="iconify fs-20px my-n1 me-2 ms-n1 text-theme" data-icon="solar:tag-linear"></span>
+					Status
+					<i class="fa ms-auto fa-chevron-down"></i>
+				</a>
+				<ul class="dropdown-menu">
+					<li><a class="dropdown-item d-flex align-items-center" href="#"><i class="fa fa-circle fs-7px me-2 ms-n1 text-success"></i> Active</a></li>
+					<li><a class="dropdown-item d-flex align-items-center" href="#"><i class="fa fa-circle fs-7px me-2 ms-n1 text-body text-opacity-25"></i> Inactive</a></li>
+					<li><a class="dropdown-item d-flex align-items-center" href="#"><i class="fa fa-circle fs-7px me-2 ms-n1 text-danger"></i> Removed</a></li>
+					<li><a class="dropdown-item d-flex align-items-center" href="#"><i class="fa fa-circle fs-7px me-2 ms-n1 text-warning"></i> Pending</a></li>
+					<li><a class="dropdown-item d-flex align-items-center" href="#"><i class="fa fa-circle fs-7px me-2 ms-n1 text-primary"></i> Archived</a></li>
+				</ul>
+			</div>
+			<div class="col-lg-2 d-lg-block d-none">
+				<a href="#" class="btn btn-white d-flex align-items-center rounded-3" data-bs-toggle="dropdown">
+					<i class="fa fa-lg fa-location-dot me-10px text-body text-opacity-50 d-none"></i>
+					<span class="iconify fs-20px my-n1 me-2 ms-n1 text-theme" data-icon="solar:map-point-linear"></span>
+					Location
+					<i class="fa ms-auto fa-chevron-down"></i>
+				</a>
+				<ul class="dropdown-menu">
+					<li><a class="dropdown-item d-flex align-items-center" href="#"><span class="iconify fs-20px my-n1 me-2 ms-n1 text-body text-opacity-50" data-icon="solar:map-point-linear"></span> New York City, New York, USA</a></li>
+					<li><a class="dropdown-item d-flex align-items-center" href="#"><span class="iconify fs-20px my-n1 me-2 ms-n1 text-body text-opacity-50" data-icon="solar:map-point-linear"></span> London, United Kingdom</a></li>
+					<li><a class="dropdown-item d-flex align-items-center" href="#"><span class="iconify fs-20px my-n1 me-2 ms-n1 text-body text-opacity-50" data-icon="solar:map-point-linear"></span> Tokyo, Japan</a></li>
+					<li><a class="dropdown-item d-flex align-items-center" href="#"><span class="iconify fs-20px my-n1 me-2 ms-n1 text-body text-opacity-50" data-icon="solar:map-point-linear"></span> Sydney, Australia</a></li>
+					<li><a class="dropdown-item d-flex align-items-center" href="#"><span class="iconify fs-20px my-n1 me-2 ms-n1 text-body text-opacity-50" data-icon="solar:map-point-linear"></span> Paris, France</a></li>
+				</ul>
+			</div>
+			<div class="col-lg-2 d-lg-block d-none">
+				<a href="#" class="btn btn-white d-flex align-items-center rounded-3" data-bs-toggle="dropdown">
+					<span class="iconify fs-20px my-n1 me-2 ms-n1 text-theme" data-icon="solar:tuning-linear"></span>
+					More filters
+					<i class="fa ms-auto fa-chevron-down"></i>
+				</a>
+				<ul class="dropdown-menu">
+					<li><a class="dropdown-item" href="#">High Priority</a></li>
+					<li><a class="dropdown-item" href="#">Low Priority</a></li>
+					<li><a class="dropdown-item" href="#">Overdue</a></li>
+					<li><a class="dropdown-item" href="#">Completed</a></li>
+					<li><hr class="dropdown-divider"></li>
+					<li><a class="dropdown-item" href="#">Custom Filter 1</a></li>
+					<li><a class="dropdown-item" href="#">Custom Filter 2</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="d-lg-flex align-items-center mb-n2">
+			<div class="d-lg-flex d-none align-items-center text-nowrap">
+				Results per page:
+				<select class="form-select form-select-sm ms-2 h-25px py-0 ps-2 pe-30px">
+					<option>100</option>
+					<option>50</option>
+					<option selected>30</option>
+				</select>
+			</div>
+			<div class="d-lg-block d-none ms-2 text-body text-opacity-50">
+				1,495 results found
+			</div>
+		
+			<ul class="pagination pagination-sm mb-0 ms-auto justify-content-center">
+				<li class="page-item disabled"><a class="page-link">Previous</a></li>
+				<li class="page-item d-lg-block d-none2"><a class="page-link" href="#">1</a></li>
+				<li class="page-item d-lg-block d-none2"><a class="page-link bg-theme text-theme-color border border-theme" href="#">2</a></li>
+				<li class="page-item d-lg-block d-none2"><a class="page-link" href="#">3</a></li>
+				<li class="page-item d-lg-block d-none2"><a class="page-link" href="#">4</a></li>
+				<li class="page-item d-lg-block d-none2"><a class="page-link" href="#">5</a></li>
+				<li class="page-item"><a class="page-link" href="#">Next</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="table-responsive" id="table">
+		<table class="table table-thead-sticky table-tfoot-sticky table-tbody-bordered table-px-10px table-py-4px table-sm table-striped text-nowrap mb-0">
+			<thead>
+				<tr>
+					<th>
+						<div class="form-check d-flex justify-content-center my-0 mx-n1">
+							<input type="checkbox" class="form-check-input" data-toggle="check-all" />
+						</div>
+					</th>
+					<th>Address</th>
+					<th>Data</th>
+					<th>Label</th>
+					<th>Instruction</th>
+					<th>Operation</th>
+					<th>Comment</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+						<div class="form-check d-flex justify-content-center my-0 mx-n1">
+							<input type="checkbox" class="form-check-input" />
+						</div>
+					</td>
+					<td>00300000</td>
+					<td>24020001</td>
+					<td></td>
+					<td>Li</td>
+					<td>v0, $00000001</td>
+					<td>// this is a test comment to talk about this address</td>
+				</tr>
+				<tr>
+					<td>
+						<div class="form-check d-flex justify-content-center my-0 mx-n1">
+							<input type="checkbox" class="form-check-input" />
+						</div>
+					</td>
+					<td>00300000</td>
+					<td>24020001</td>
+					<td></td>
+					<td>Li</td>
+					<td>v0, $00000001</td>
+					<td>// this is a test comment to talk about this address</td>
+				</tr>
+				<tr>
+					<td>
+						<div class="form-check d-flex justify-content-center my-0 mx-n1">
+							<input type="checkbox" class="form-check-input" />
+						</div>
+					</td>
+					<td>00300000</td>
+					<td>24020001</td>
+					<td></td>
+					<td>Li</td>
+					<td>v0, $00000001</td>
+					<td>// this is a test comment to talk about this address</td>
+				</tr>			
+			</tbody>
+			<tfoot>
+				<tr>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
+</div>

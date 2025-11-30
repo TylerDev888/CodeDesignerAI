@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "CodeDesigner.WPF\\CodeDesigner.WPF.csproj",
+        "Action": "StartWithoutDebugging"
+      },
+      {
+        "Path": "CodeDesigner.API\\CodeDesigner.WebAPI.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

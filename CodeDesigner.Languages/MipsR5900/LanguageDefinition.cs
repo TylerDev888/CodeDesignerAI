@@ -9,14 +9,46 @@ namespace CodeDesigner.Languages.MipsR5900
     public static class LanguageDefinition
     {
         public static List<EERegister> EERegisters { get; }
-            = JsonConvert.DeserializeObject<List<EERegister>>(File.ReadAllText("MipsR5900/Resources/EERegisters.json"));
-        public static List<COP0Register> COP0Registers { get; }
-            = JsonConvert.DeserializeObject<List<COP0Register>>(File.ReadAllText("MipsR5900/Resources/COP0Registers.json"));
-        public static List<COP1Register> COP1Registers { get; }
-            = JsonConvert.DeserializeObject<List<COP1Register>>(File.ReadAllText("MipsR5900/Resources/COP1Registers.json"));
-        public static List<Instruction> Instructions { get; }
-            = JsonConvert.DeserializeObject<List<Instruction>>(File.ReadAllText("MipsR5900/Resources/Instructions.json"));
+            = JsonConvert.DeserializeObject<List<EERegister>>(ReadEmbeddedResource("EERegisters.json"));
 
+        public static List<COP0Register> COP0Registers { get; }
+            = JsonConvert.DeserializeObject<List<COP0Register>>(ReadEmbeddedResource("COP0Registers.json"));
+
+        public static List<COP1Register> COP1Registers { get; }
+            = JsonConvert.DeserializeObject<List<COP1Register>>(ReadEmbeddedResource("COP1Registers.json"));
+
+        public static List<Instruction> Instructions { get; }
+            = JsonConvert.DeserializeObject<List<Instruction>>(ReadEmbeddedResource("Instructions.json"));
+        
+        public static List<Instruction> BranchInstructions 
+        { 
+            get 
+            {
+                return Instructions.FindAll(x => x.Description.Contains("Branch"));
+            } 
+        }
+
+        public static List<Instruction> JumpInstructions 
+        { 
+            get
+            {
+                return Instructions.FindAll(x => x.Description.Contains("Jump"));
+            } 
+        }
+
+        private static string ReadEmbeddedResource(string resourceName)
+        {
+            var assembly = typeof(LanguageDefinition).Assembly;
+            var fullResourceName = assembly.GetManifestResourceNames()
+                .FirstOrDefault(name => name.EndsWith(resourceName, StringComparison.OrdinalIgnoreCase));
+
+            if (fullResourceName == null)
+                throw new FileNotFoundException($"Embedded resource '{resourceName}' not found.");
+
+            using var stream = assembly.GetManifestResourceStream(fullResourceName);
+            using var reader = new StreamReader(stream);
+            return reader.ReadToEnd();
+        }
         public static class PlaceHolders
         {
             public static List<string> EERegisters { get; } = new List<string> { "base", "rs", "rt", "rd" };

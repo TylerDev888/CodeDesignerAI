@@ -1,0 +1,88 @@
+<!-- BEGIN breadcrumb -->
+<ol class="breadcrumb float-xl-end">
+    <li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
+    <li class="breadcrumb-item"><a href="javascript:;">Playstation 2</a></li>
+    <li class="breadcrumb-item active">Code Editor</li>
+</ol>
+<!-- END breadcrumb -->
+<!-- BEGIN page-header -->
+<h1 class="page-header">Code Editor <small>create game patches using code designer source code(.cds).</small></h1>
+<!-- END page-header -->
+
+<div class="row mb-3">
+
+    <div class="col-xl-9">
+
+        <!-- BEGIN panel -->
+        <panel headerClass="bg-blue-700" title="Source Code">
+            <div>
+                <div id="container" style="height:400px;"></div>
+            </div>
+            <ng-container outsideBody>
+                <!-- BEGIN hljs-wrapper -->
+                <div class="hljs-wrapper">
+                    <div class="panel-footer text-end">
+                        <a href="javascript:;" class="btn btn-primary btn-sm ms-5px"
+                            (click)="onGenerateClick()">Generate</a>
+                    </div>
+                </div>
+                <!-- END hljs-wrapper -->
+            </ng-container>
+        </panel>
+        <!-- END panel -->
+    </div>
+    <div class="col-xl-3">
+
+        <!-- BEGIN panel -->
+        <panel panelClass="panel-hover-icon" title="Cheat Code">
+            <div style="font-size: 16px;">
+                <ng-scrollbar style="height: 400px;">
+                    <pre>{{code}}</pre>
+                </ng-scrollbar>
+            </div>
+            <ng-container outsideBody>
+                <!-- BEGIN hljs-wrapper -->
+                <div class="hljs-wrapper">
+                    <div class="panel-footer text-end">
+                        <a href="javascript:;" class="btn btn-primary btn-sm ms-5px">Copy</a>
+                    </div>
+                </div>
+                <!-- END hljs-wrapper -->
+            </ng-container>
+        </panel>
+        <!-- END panel -->
+    </div>
+</div>
+
+
+<div class="row mb-3">
+    <div class="col-xl-12">
+        <!-- BEGIN panel -->
+        <panel panelClass="panel-hover-icon" title="Console">
+            <ng-scrollbar style="height: 200px;font-size: 14px;">
+            <div *ngFor="let message of debugMessages">
+                <!-- Show primary alert if it includes "DEBUG" -->
+                <div class="note alert-primary" style="margin-bottom: 0;" *ngIf="message.includes('DEBUG')">
+                    <pre>{{ message }}</pre>
+                </div>
+
+                <!-- Show error alert if it includes "ERROR" -->
+                <div class="note alert-error" style="margin-bottom: 0;" *ngIf="message.includes('ERROR')">
+                    <pre>{{ message }}</pre>
+                </div>
+
+                <!-- Show success alert if it includes "SUCCESS" -->
+                <div class="note alert-success" style="margin-bottom: 0;" *ngIf="message.includes('INFO')">
+                    <pre>{{ message }}</pre>
+                </div>
+
+                <!-- Show warning alert if it includes "WARNING" -->
+                <div class="note alert-warning" style="margin-bottom: 0;" *ngIf="message.includes('WARNING')">
+                    <pre>{{ message }}</pre>
+                </div>
+            </div>
+        </ng-scrollbar>
+        </panel>
+        <!-- END panel -->
+    </div>
+</div>

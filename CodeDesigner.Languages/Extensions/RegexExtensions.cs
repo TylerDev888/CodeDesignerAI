@@ -1,4 +1,4 @@
-﻿using CodeDesigner.Languages.CDL;
+﻿using CodeDesigner.Languages.CDS;
 using System;
 using System.Collections.Generic;
 using System.Linq;

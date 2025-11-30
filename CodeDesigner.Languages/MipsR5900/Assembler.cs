@@ -33,7 +33,7 @@ namespace CodeDesigner.Languages.MipsR5900
 
             return syntax.ToLower();
         }
-        public string GetSyntaxArgByBinary(string placeholder, BinaryString argBinary)
+        public string? GetSyntaxArgByBinary(string placeholder, BinaryString argBinary)
         {
             if (LanguageDefinition.PlaceHolders.EERegisters.Contains(placeholder))
             {
@@ -71,7 +71,7 @@ namespace CodeDesigner.Languages.MipsR5900
                 return null;
             }
         }
-        public Instruction GetInstruction(BinaryString binaryString)
+        public Instruction? GetInstruction(BinaryString binaryString)
         {
             return LanguageDefinition.Instructions.Find(instruction =>
             {

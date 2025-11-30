@@ -25,5 +25,9 @@ namespace CodeDesigner.Languages.MipsR5900.BaseTypes
             var test = new BinaryString(binaryString.PadLeft(_value.Length * 4, '0'));
             return test;
         }
+        public override string ToString()
+        {
+            return _value;
+        }
     }
 }

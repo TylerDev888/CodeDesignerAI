@@ -12,12 +12,21 @@ namespace CodeDesigner.Library.Editors
         private byte[] _fileBytes
         {
             get => this._bytes;
-            set => value = this._bytes;
+            set => this._bytes = value;
         }
 
         public SnapShotEditor(string filePath)
         {
-            _fileBytes = System.IO.File.ReadAllBytes(filePath);
-        }
+            Console.WriteLine($"[DEBUG] Current Directory: {Directory.GetCurrentDirectory()}");
+            Console.WriteLine($"[DEBUG] Path: {filePath}");
+
+            if (File.Exists(filePath))
+            {
+                _fileBytes = File.ReadAllBytes(@$"{Directory.GetCurrentDirectory()}\{filePath}");
+            } else
+            {
+                Console.Error.WriteLine("The file path was incorrect.");
+            }
+        }   
     }
 }

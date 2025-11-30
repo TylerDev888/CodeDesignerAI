@@ -8,20 +8,23 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Resources\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="CommandLineParser" Version="2.9.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\CodeDesigner.Languages\CodeDesigner.Languages.csproj" />
     <ProjectReference Include="..\CodeDesigner.Library\CodeDesigner.Library.csproj" />
+    <ProjectReference Include="..\CodeDesigner.OpenAI\CodeDesigner.OpenAI.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <None Update="Resources\cheats.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\include_test.cds">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\test.bin">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Resources\test.cds">

@@ -16,7 +16,7 @@ namespace CodeDesigner.UnitTests
             {
                 StartInfo =
                     {
-                        FileName = Environment.CurrentDirectory + @"\..\..\..\CodeDesigner.ConsoleApp\bin\Debug\CodeDesigner.ConsoleApp.exe",
+                        FileName = Environment.CurrentDirectory + @"\..\..\..\..\CodeDesigner.ConsoleApp\bin\Debug\net9.0\CodeDesigner.ConsoleApp.exe",
                         CreateNoWindow = false,
                         UseShellExecute = false,
                         RedirectStandardOutput = true,

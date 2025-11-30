@@ -1,0 +1,49 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@fortawesome/fontawesome-free/css/all.css';
+
+.hljs {
+    color: #d4d4d4;
+  }
+  
+  .hljs-comment {
+    color: #6A9955;
+    font-style: italic;
+  }
+  
+  .hljs-string {
+    color: #CE9178;
+  }
+  
+  .hljs-keyword {
+    color: #FFD700;
+    font-weight: bold;
+  }
+  
+  .hljs-register-arg {
+    color: #4EC9B0;
+  }
+  
+  .hljs-register-temp {
+    color: #C586C0;
+  }
+  
+  .hljs-register-saved {
+    color: #9CDCFE;
+  }
+  
+  .hljs-register-special {
+    color: #DCDCAA;
+  }
+  
+  .hljs-number {
+    color: #B5CEA8;
+  }
+  
+  .hljs-symbol {
+    color: #D7BA7D;
+  }
+  
+  .hljs-title {
+    color: #d4d4d4;
+  }
+  

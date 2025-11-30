@@ -4,6 +4,7 @@ using System.Text;
 using CodeDesigner.Languages.Extensions;
 using CodeDesigner.Languages.MipsR5900.BaseTypes;
 using CodeDesigner.Languages.Interfaces;
+using System.Text.RegularExpressions;
 
 namespace CodeDesigner.Languages.MipsR5900
 {
@@ -62,12 +63,17 @@ namespace CodeDesigner.Languages.MipsR5900
             return binary.ToHexString().Value;
         }
         public string[] SplitOperationString(string operation)
-            => operation.Replace(",", " ")
+        {
+            operation = operation.Replace(",", " ")
                 .Replace("(", " ")
                 .Replace(")", " ")
-                .Replace("  ", " ")
-                .Replace("$", " ")
+                .Replace("$", " ");
+
+            operation = Regex.Replace(operation, @"\s+", " ").Trim();
+
+            return operation
                 .Split(" ");
+        }
         public BinaryString GetArgByValue(string placeholder, string textDisplay)
         {
             if (LanguageDefinition.PlaceHolders.EERegisters.Contains(placeholder))

@@ -1,4 +1,4 @@
-# CodeDesignerAI VSCode
+# CodeDesignerAI VSCode [![CI](https://github.com/TylerDev888/CodeDesignerAI/actions/workflows/ci.yml/badge.svg)](https://github.com/TylerDev888/CodeDesignerAI/actions/workflows/ci.yml)
 ![CodeDesigner screenshot](./Screenshot.png)
 
 ## Description

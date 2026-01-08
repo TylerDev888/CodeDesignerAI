@@ -1,27 +1,27 @@
-# CodeDesigner - Project README Index
-
+# CodeDesignerAI VSCode [![CI](https://github.com/TylerDev888/CodeDesignerAI/actions/workflows/ci.yml/badge.svg)](https://github.com/TylerDev888/CodeDesignerAI/actions/workflows/ci.yml)
 ![CodeDesigner screenshot](./Screenshot.png)
 
-Central index linking all project-level READMEs and a small legend to help navigate the repository.
+## Description
+A MIPS64 (PS2 Emotion Engine) assembler / disassembler with extended pseudo-commands and directives for custom CDS scripts. Used to create custom patches for the playstation 2. Make sure to use github co-pilot with this vs code extension. 
 
 ## Projects and READMEs
 - CLI & tooling
-  - [CodeDesigner.ConsoleApp](CodeDesigner.ConsoleApp/ReadMe.md) — Console front-end / CLI
-  - [CodeDesigner.Languages](CodeDesigner.Languages/README.md) — Parsers, models, `CDSFile`
-  - [CodeDesigner.Library](CodeDesigner.Library/README.md) — Shared utilities and domain models
-  - [CodeDesigner.OpenAI](CodeDesigner.OpenAI/README.md) — OpenAI integration helpers
+  - [CodeDesigner.ConsoleApp](CodeDesigner.ConsoleApp/ReadMe.md) â€” Console front-end / CLI
+  - [CodeDesigner.Languages](CodeDesigner.Languages/README.md) â€” Parsers, models, `CDSFile`
+  - [CodeDesigner.Library](CodeDesigner.Library/README.md) â€” Shared utilities and domain models
+  - [CodeDesigner.OpenAI](CodeDesigner.OpenAI/README.md) â€” OpenAI integration helpers
 - Web & editor
-  - [website/cd-client](website/cd-client/README.md) — Angular UI client
-  - [vscode/cds-assembler](vscode/cds-assembler/README.md) — VS Code extension for assembler tooling
-  - [vscode/cds-language](vscode/cds-language/README.md) — VS Code language support for `.cds` files
+  - [website/cd-client](website/cd-client/README.md) â€” Angular UI client
+  - [vscode/cds-assembler](vscode/cds-assembler/README.md) â€” VS Code extension for assembler tooling
+  - [vscode/cds-language](vscode/cds-language/README.md) â€” VS Code language support for `.cds` files
 
 If a link points to a missing README, open the target folder and create the `README.md` file there.
 
 ## Legend (quick reference)
-- [D] Development setup — how to run locally (install, start, test)  
-- [B] Build / Packaging — produce distributables or publish artifacts  
-- [I] Integration — how projects connect (APIs, CLI, extension tasks)  
-- [C] Contributing — guidelines for fixes and features
+- [D] Development setup â€” how to run locally (install, start, test)  
+- [B] Build / Packaging â€” produce distributables or publish artifacts  
+- [I] Integration â€” how projects connect (APIs, CLI, extension tasks)  
+- [C] Contributing â€” guidelines for fixes and features
 
 Each project README contains sections marked with the letters above when applicable.
 

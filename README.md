@@ -4,6 +4,14 @@
 ## Description
 A MIPS64 (PS2 Emotion Engine) assembler / disassembler with extended pseudo-commands and directives for custom CDS scripts. Used to create custom patches for the playstation 2. Make sure to use github co-pilot with this vs code extension. 
 
+## Future plans in development
+1. vscode disassembler windows that reflect pcsx2dis
+2. pcsx2 integration
+3. cheat engine
+4. more pseudo syntax
+5. better integration with github co pilot / custom LLM / code generation / code auto finder
+6. Support other consoles /  emulators
+
 ## Projects and READMEs
 - CLI & tooling
   - [CodeDesigner.ConsoleApp](CodeDesigner.ConsoleApp/ReadMe.md) — Console front-end / CLI

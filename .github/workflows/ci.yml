@@ -44,12 +44,6 @@ jobs:
             vscode/cds-assembler/package-lock.json
             vscode/cds-language/package-lock.json
 
-      - name: Build website/cd-client (Angular)
-        working-directory: website/cd-client
-        run: |
-          npm ci
-          npm run build --if-present
-
       - name: Build vscode/cds-assembler
         working-directory: vscode/cds-assembler
         run: |

@@ -8,17 +8,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Controllers\**" />
+    <Content Remove="Controllers\**" />
+    <EmbeddedResource Remove="Controllers\**" />
+    <None Remove="Controllers\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.SignalR" Version="1.2.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\CodeDesigner.Languages\CodeDesigner.Languages.csproj" />
     <ProjectReference Include="..\CodeDesigner.Library\CodeDesigner.Library.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Controllers\Assembler\" />
-    <Folder Include="Controllers\Disassembler\" />
   </ItemGroup>
 
 </Project>

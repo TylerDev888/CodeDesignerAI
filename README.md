@@ -1,5 +1,7 @@
 # CodeDesigner - Project README Index
 
+![CodeDesigner screenshot](./Screenshot.png)
+
 Central index linking all project-level READMEs and a small legend to help navigate the repository.
 
 ## Projects and READMEs

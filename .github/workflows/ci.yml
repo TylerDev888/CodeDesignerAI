@@ -1,0 +1,61 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup .NET (9.x)
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '9.0.x'
+
+      - name: Cache NuGet packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.nuget/packages
+          key: nuget-${{ runner.os }}-${{ hashFiles('**/*.csproj', '**/global.json') }}
+          restore-keys: nuget-${{ runner.os }}-
+
+      - name: Restore .NET packages
+        run: dotnet restore
+
+      - name: Build all .NET projects
+        run: dotnet build --configuration Release --no-restore --verbosity minimal
+
+      - name: Setup Node.js (for web projects)
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Build website/cd-client (Angular)
+        working-directory: website/cd-client
+        run: |
+          npm ci
+          npm run build --if-present
+
+      - name: Build vscode/cds-assembler
+        working-directory: vscode/cds-assembler
+        run: |
+          npm ci
+          npm run build --if-present
+
+      - name: Build vscode/cds-language
+        working-directory: vscode/cds-language
+        run: |
+          npm ci
+          npm run build --if-present
+
+      - name: Summary
+        if: success()
+        run: echo "Build completed: .NET projects and web projects built successfully."

@@ -4,6 +4,55 @@
 ## Description
 A MIPS64 (PS2 Emotion Engine) assembler / disassembler with extended pseudo-commands and directives for custom CDS scripts. Used to create custom patches for the playstation 2. Make sure to use github co-pilot with this vs code extension. 
 
+## Example CDS script
+```asm
+/*
+This is a test cds script
+*/
+address $20694d48 
+hexcode $00010000
+
+address $20c49788
+hexcode $ffffffff
+
+address $200c0000
+print "this is a string"
+nop
+___OnRoomExit:
+addiu sp, sp, $FFd0
+sw ra, $0000(sp)
+sw s0, $0004(sp)
+sw s1, $0008(sp)
+sw at, $000C(sp)
+
+setreg at, $002CED04
+setreg s1, $03e00008
+sw s1, $0000(at)
+
+setreg at, $000A0000
+sw zero, $0000(at)
+sw zero, $0004(at)
+sw zero, $0008(at)
+
+// load pointer
+lui s0, $0044
+lw s0, $0c38(s0)
+beq s0, zero, :EndOnRoomExit
+nop
+lw s1, $0010(at)
+sw s1, $0014(s0)
+lw s1, $000C(at)
+sw s1, $0028(s0)
+
+EndOnRoomExit:
+lw ra, $0000(sp)
+lw s0, $0004(sp)
+lw s1, $0008(sp)
+lw at, $000C(sp)
+j $00204438
+addiu sp sp, $0030
+```
+
 ## Planned Enhancements / Future Work
 
 - **VS Code Disassembler Views**

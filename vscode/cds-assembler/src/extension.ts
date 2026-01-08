@@ -55,6 +55,14 @@ class CDSAssemblerPanelProvider implements vscode.WebviewViewProvider {
         });
     }
 
+    private getWorkspaceRoot(): string | null {
+        const folders = vscode.workspace.workspaceFolders;
+        if (!folders || folders.length === 0) {
+            return null;
+        }
+        return folders[0].uri.fsPath;
+    }
+
     private runCds(option: string) {
 
         const editor = vscode.window.activeTextEditor;
@@ -73,6 +81,7 @@ class CDSAssemblerPanelProvider implements vscode.WebviewViewProvider {
         outputChannel.clear();
         outputChannel.show(true);
         outputChannel.appendLine(`> ${command}\n`);
+        //outputChannel.appendLine(this.getWorkspaceRoot() ?? 'No workspace root');
 
         exec(command, (error, stdout, stderr) => {
 

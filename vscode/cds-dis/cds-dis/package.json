@@ -1,0 +1,52 @@
+{
+  "name": "cds-dis",
+  "displayName": "CDS Disassembler",
+  "description": "PS2 MIPS Disassembler",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.107.0"
+  },
+  "categories": ["Other"],
+  "activationEvents": [
+    "onCustomEditor:cdsDisasm.binEditor",
+    "onView:cdsDisasm.panel"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "cdsDisasm",
+          "title": "CDS Disasm",
+          "icon": "resources/disasm-icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "cdsDisasm": [
+        {
+          "id": "cdsDisasm.panel",
+          "name": "Disassembler"
+        }
+      ]
+    },
+    "customEditors": [
+      {
+        "viewType": "cdsDisasm.binEditor",
+        "displayName": "CDS Disassembler",
+        "selector": [
+          { "filenamePattern": "*.bin" }
+        ],
+        "priority": "default"
+      }
+    ]
+  },
+  "scripts": {
+    "compile": "tsc -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "^20.3.1",
+    "@types/vscode": "^1.107.0",
+    "typescript": "^5.1.3"
+  }
+}

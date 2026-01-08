@@ -59,3 +59,7 @@ Each project README contains sections marked with the letters above when applica
 - Add changelogs or release notes where appropriate.  
 - Prefer small, focused PRs and include test or verification steps in the PR description.
 
+## Branching Strategy
+  - Define and document a clear Git branching model (e.g., `main`, `dev`, `feature`, `bug`)
+  - Establish pull request requirements, review expectations, and CI validation rules
+

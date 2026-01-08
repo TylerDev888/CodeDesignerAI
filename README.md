@@ -1,40 +1,36 @@
 # CodeDesigner - Project README Index
 
-This root README links the project-level READMEs and provides a small legend to help navigate the repository.
+Central index linking all project-level READMEs and a small legend to help navigate the repository.
 
 ## Projects and READMEs
-- `CodeDesigner.ConsoleApp` — CLI front-end
-  - See: `CodeDesigner.ConsoleApp/ReadMe.md`
-- `CodeDesigner.Languages` — Parsers, models, and `CDSFile`
-  - See: `CodeDesigner.Languages/README.md`
-- `CodeDesigner.Library` — Shared utilities and models
-  - See: `CodeDesigner.Library/README.md`
-- `CodeDesigner.OpenAI` — OpenAI integration helpers
-  - See: `CodeDesigner.OpenAI/README.md`
-- Web & editor projects:
-  - `website/cd-client` — Angular UI client (see `website/cd-client/README.md`)
-  - `vscode/cds-assembler` — VS Code extension for assembler tooling (see `vscode/cds-assembler/README.md`)
-  - `vscode/cds-language` — VS Code language support for `.cds` files (see `vscode/cds-language/README.md`)
+- CLI & tooling
+  - [CodeDesigner.ConsoleApp](CodeDesigner.ConsoleApp/ReadMe.md) — Console front-end / CLI
+  - [CodeDesigner.Languages](CodeDesigner.Languages/README.md) — Parsers, models, `CDSFile`
+  - [CodeDesigner.Library](CodeDesigner.Library/README.md) — Shared utilities and domain models
+  - [CodeDesigner.OpenAI](CodeDesigner.OpenAI/README.md) — OpenAI integration helpers
+- Web & editor
+  - [website/cd-client](website/cd-client/README.md) — Angular UI client
+  - [vscode/cds-assembler](vscode/cds-assembler/README.md) — VS Code extension for assembler tooling
+  - [vscode/cds-language](vscode/cds-language/README.md) — VS Code language support for `.cds` files
+
+If a link points to a missing README, open the target folder and create the `README.md` file there.
 
 ## Legend (quick reference)
-- [D] Development setup — steps to run locally (install, start, test)
-- [B] Build / Packaging — how to produce distributable artifacts
-- [I] Integration — how each project connects to others (APIs, CLI commands)
-- [C] Contributing — guidelines for adding features or fixes
+- [D] Development setup — how to run locally (install, start, test)  
+- [B] Build / Packaging — produce distributables or publish artifacts  
+- [I] Integration — how projects connect (APIs, CLI, extension tasks)  
+- [C] Contributing — guidelines for fixes and features
 
-Use the first letter to identify sections in each project README:
-- A README section prefixed with [D] contains developer setup instructions.
-- Sections with [B] explain build and packaging steps.
-- [I] lists how to integrate with other projects in the repo.
-- [C] gives contribution guidance.
+Each project README contains sections marked with the letters above when applicable.
 
 ## Recommended workflow
-1. Read the project README you will work on.
-2. For UI work: run `website/cd-client` dev server with `npm run start`.
-3. For extension/language work: open the `vscode/` folder in VS Code and use F5 to test.
-4. For CLI behavior: run `dotnet run --project CodeDesigner.ConsoleApp -- <verb> [options]`
+1. Open the project README for the area you will work on (links above).  
+2. For UI work: run the web client in `website/cd-client` (`npm install` then `npm run start`).  
+3. For editor extensions: open the `vscode/` folder in VS Code and use F5 to test.  
+4. For CLI behavior: run `dotnet run --project CodeDesigner.ConsoleApp -- <verb> [options]`.
 
-## Contributing
-- Keep README updates in sync with code changes.
-- Add changelogs or release notes for public consumption as features stabilize.
+## Contacts & contribution
+- Keep README updates in sync with code changes.  
+- Add changelogs or release notes where appropriate.  
+- Prefer small, focused PRs and include test or verification steps in the PR description.
 

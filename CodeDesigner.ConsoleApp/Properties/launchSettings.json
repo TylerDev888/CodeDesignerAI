@@ -2,6 +2,7 @@
   "profiles": {
     "CodeDesigner.ConsoleApp": {
       "commandName": "Project",
+      "commandLineArgs": "CDS -c -f \"c:\\Users\\tholu\\Desktop\\test.cds\"",
       "launchBrowser": true,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"

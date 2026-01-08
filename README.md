@@ -1,60 +1,40 @@
-# CodeDesigner
+# CodeDesigner - Project README Index
 
-## Status
-Small bugs but overall works pretty good. 
+This root README links the project-level READMEs and provides a small legend to help navigate the repository.
 
-## Project Details
-Code designer is a tool that can be used to assemble and disassemble Mips32 assembly code. Most if not all mips assembly instructions are supported as well as code designer syntax. Code designer syntax is a small set of commands that can make writting assembly much easier.
+## Projects and READMEs
+- `CodeDesigner.ConsoleApp` — CLI front-end
+  - See: `CodeDesigner.ConsoleApp/ReadMe.md`
+- `CodeDesigner.Languages` — Parsers, models, and `CDSFile`
+  - See: `CodeDesigner.Languages/README.md`
+- `CodeDesigner.Library` — Shared utilities and models
+  - See: `CodeDesigner.Library/README.md`
+- `CodeDesigner.OpenAI` — OpenAI integration helpers
+  - See: `CodeDesigner.OpenAI/README.md`
+- Web & editor projects:
+  - `website/cd-client` — Angular UI client (see `website/cd-client/README.md`)
+  - `vscode/cds-assembler` — VS Code extension for assembler tooling (see `vscode/cds-assembler/README.md`)
+  - `vscode/cds-language` — VS Code language support for `.cds` files (see `vscode/cds-language/README.md`)
 
-## Features
-* Syntax highlighing of both the assembler and disassembler views
-* Supports EE, COP0, and C0P1
-* Code designer syntax
-* The parser can detail errors down to the argument
-* Single and multiline comments
-* Multiple projects can be open at a time.
+## Legend (quick reference)
+- [D] Development setup — steps to run locally (install, start, test)
+- [B] Build / Packaging — how to produce distributable artifacts
+- [I] Integration — how each project connects to others (APIs, CLI commands)
+- [C] Contributing — guidelines for adding features or fixes
 
-### Code designer syntax
+Use the first letter to identify sections in each project README:
+- A README section prefixed with [D] contains developer setup instructions.
+- Sections with [B] explain build and packaging steps.
+- [I] lists how to integrate with other projects in the repo.
+- [C] gives contribution guidance.
 
-##### Address 
-will tell the assembler, the the address it should start counting from. Labels are not supported with the address command.
-Address $000a0000
+## Recommended workflow
+1. Read the project README you will work on.
+2. For UI work: run `website/cd-client` dev server with `npm run start`.
+3. For extension/language work: open the `vscode/` folder in VS Code and use F5 to test.
+4. For CLI behavior: run `dotnet run --project CodeDesigner.ConsoleApp -- <verb> [options]`
 
-## Labels 
-can be used to define an address with a human readable string. Labels can then be used with some operations and some Code desinger commands.
-label: <--- a label can be used to set an address.
-:targetlabel <---- target labels can be used to tell an instruction or command to use the labels address.
-
-label:
-addiu a0, a0, $0001
-beq zero, zero, :label <--- will calculate the offet for the branch
-nop
-j :label <--will use the labels address for the jump operation
-
-### Setreg 
-will set a registers value to the word or label supplied.
-setreg a0, $12345678
-setreg a0, :label
-
-### Call 
-will pass the registers given and move them into argument registers then it will perform a jal instruction to the address or label specified.
-call $12345678(s0, s1, s2, s3)
-call :label(s0, s1, s2, s3)
-
-### Hexcode 
-will place a word at the current address of the assembler. The word can be defined in hex or it can come from a labels address.
-hexcode $12345678
-hecode :label
-
-### Print will take a string and convert it into hexidecimal
-print "hello world"
-
-
-OLD UI / New UI(angular client) images will be added soon
-<img src="http://i.imgur.com/IS3dxgX.png"></img>
-<img src="http://i.imgur.com/hYVFDx3.png"></img>
-<img src="http://i.imgur.com/IHQw3It.png"></img>
-<img src="http://i.imgur.com/LbUnAir.png"></img>
-<img src="http://i.imgur.com/qTFXR1G.png"></img>
-<img src="http://i.imgur.com/AYm9Nr6.png"></img>
+## Contributing
+- Keep README updates in sync with code changes.
+- Add changelogs or release notes for public consumption as features stabilize.
 

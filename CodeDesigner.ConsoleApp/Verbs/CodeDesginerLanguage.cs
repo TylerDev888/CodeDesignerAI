@@ -1,4 +1,5 @@
-﻿using CodeDesigner.Languages.CDS;
+﻿using CodeDesigner.ConsoleApp.Results;
+using CodeDesigner.Languages.CDS;
 using CodeDesigner.Languages.Logging;
 using CommandLine;
 using System;
@@ -12,6 +13,8 @@ namespace CodeDesigner.ConsoleApp.Verbs
     [Verb("CDS", HelpText = "Compile/De-compile code designer source code.")]
     public class CodeDesignerLanguage
     {
+        [Option('a', "Analyze", HelpText = "Analyzes the source code and displays debug information.")]
+        public bool Analyze { get; set; }
         [Option('c', "Compile", HelpText = "Compile code designer source code.")]
         public bool Compile { get; set; }
         [Option('d', "Decompile", HelpText = "Decompile code designer source code.")]
@@ -25,18 +28,20 @@ namespace CodeDesigner.ConsoleApp.Verbs
         {
             if (cdlOptions.Compile)
             {
-                var logger = new ConsoleLogger();
-                
-                logger.Debug($"[DEBUG] Current Directory: {Directory.GetCurrentDirectory()}");
+                var logger = new MemoryLogger();
 
-                var cds = new CDSFile(logger, $@"{Directory.GetCurrentDirectory()}\{cdlOptions.FilePath.Replace("\"", "")}");
+                var cds = new CDSFile(logger, $@"{cdlOptions.FilePath.Replace("\"", "")}");
 
-                logger.Debug($"[DEBUG] FilePath: " + $@"{Directory.GetCurrentDirectory()}\{cdlOptions.FilePath.Replace("\"", "")}");
+                var result = new CompilerResult()
+                {
+                    CheatCodes = cds.ToCheatCode(),
+                    DebugMessages = cds.ToDebugOutput().ToArray()
+                };
 
-                logger.Log(cds.ToDebugOutput());
+                Console.Write(System.Text.Json.JsonSerializer.Serialize(result));
             }
 
-            if (cdlOptions.Decompile)
+            else if (cdlOptions.Decompile)
             {
 
             }

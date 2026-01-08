@@ -16,7 +16,7 @@ namespace CodeDesigner.ConsoleApp
     {
         static async Task Main(string[] args)
         {
-            Console.WriteLine(File.ReadAllText("Resources/WelcomeMsg.txt"));
+            //Console.WriteLine(File.ReadAllText("Resources/WelcomeMsg.txt"));
 
             //            var client = new OpenAI.OpenAIClient();
 
@@ -80,10 +80,10 @@ namespace CodeDesigner.ConsoleApp
                 commandArgs = new string[] { "help" };
             }
 
-            var endMainLoop = false;
+            //var endMainLoop = false;
 
-            while (!endMainLoop)
-            {
+            //while (!endMainLoop)
+            //{
                 _ = Parser.Default.ParseArguments<MipsR9500, CodeDesignerLanguage, Pcsx2, Verbs.CheatEngine, MemoryDump>(commandArgs)
                   .MapResult(
                     (MipsR9500 opts) => MipsR9500.Run(opts),
@@ -93,10 +93,10 @@ namespace CodeDesigner.ConsoleApp
                     (MemoryDump opts) => MemoryDump.Run(opts),
                     errs => 1);
 
-                Console.WriteLine("_________________________________________________________________________________________");
-                Console.WriteLine("Input a command: ");
-                commandArgs = Console.ReadLine()?.Split(' ');
-            }
+                //Console.WriteLine("_________________________________________________________________________________________");
+                //Console.WriteLine("Input a command: ");
+                //commandArgs = Console.ReadLine()?.Split(' ');
+            //}
         }
     }
 }

@@ -2,7 +2,7 @@ using CodeDesigner.Languages.Logging;
 using Microsoft.AspNetCore.SignalR;
 using ILogger = CodeDesigner.Languages.Logging.ILogger;
 
-namespace CodeDesigner.WebAPI.Hubs
+namespace CodeDesigner.WebAPI.Hubs.Messages
 {
     public class ClientMessage
     {

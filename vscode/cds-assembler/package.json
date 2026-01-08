@@ -1,0 +1,49 @@
+{
+  "name": "cds-assembler",
+  "displayName": "CDS Assembler",
+  "description": "CDS Assembler sidebar panel with custom commands",
+  "version": "0.0.1",
+  "publisher": "antix-fatality",
+  "engines": {
+  "vscode": "^1.107.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onView:cdsAssemblerPanel"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "cdsAssemblerSidebar",
+          "title": "CDS",
+          "icon": "resources/cds-icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "cdsAssemblerSidebar": [
+        {
+          "type": "webview",
+          "id": "cdsAssemblerPanel",
+          "name": "CDS Assembler Panel",
+          "icon": "resources/cds-icon.svg"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "^20.3.1",
+    "@types/vscode": "^1.107.0",
+    "@vscode/test-electron": "^2.3.0",
+    "typescript": "^5.1.3"
+  }
+}

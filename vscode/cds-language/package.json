@@ -1,0 +1,30 @@
+{
+  "name": "cds-language-extension",
+  "displayName": "cds language extension",
+  "description": "A MIPS64 (PS2 Emotion Engine) assembler language with extended pseudo-commands and directives for custom CDS scripts.",
+  "version": "0.0.1",
+  "publisher": "TylerDev888",
+  "engines": {
+    "vscode": "^1.107.0"
+  },
+  "repository": {
+   "type": "git",
+   "url": "https://github.com/TylerDev888/cds-language-ext.git"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "cds",
+      "aliases": ["Code Designer Source", "cds"],
+      "extensions": ["cds"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "cds",
+      "scopeName": "source.cds",
+      "path": "./syntaxes/cds.tmLanguage.json"
+    }]
+  }
+}

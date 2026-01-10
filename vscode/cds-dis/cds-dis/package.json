@@ -1,52 +1,69 @@
 {
-  "name": "cds-dis",
-  "displayName": "CDS Disassembler",
-  "description": "PS2 MIPS Disassembler",
+  "name": "disasm",
+  "displayName": "Disassembler",
+  "description": "Binary disassembler for .bin files",
   "version": "0.0.1",
-  "engines": {
-    "vscode": "^1.107.0"
-  },
+  "publisher": "tylerdev888",
+  "engines": { "vscode": "^1.107.0" },
   "categories": ["Other"],
-  "activationEvents": [
-    "onCustomEditor:cdsDisasm.binEditor",
-    "onView:cdsDisasm.panel"
-  ],
   "main": "./out/extension.js",
+
+  "activationEvents": [
+    "onCustomEditor:disasm.disasmEditor",
+    "onCommand:disasm.showPanel"
+  ],
+
   "contributes": {
+
+    "customEditors": [
+      {
+        "viewType": "disasm.disasmEditor",
+        "displayName": "Disassembler",
+        "selector": [
+          { "filenamePattern": "*.bin" }
+        ]
+      }
+    ],
+
     "viewsContainers": {
       "activitybar": [
         {
-          "id": "cdsDisasm",
-          "title": "CDS Disasm",
-          "icon": "resources/disasm-icon.svg"
+          "id": "disasmSidebar",
+          "title": "disasm",
+          "icon": "resources/cds-icon.svg"
         }
       ]
     },
+
     "views": {
-      "cdsDisasm": [
+      "disasmSidebar": [
         {
-          "id": "cdsDisasm.panel",
-          "name": "Disassembler"
+          "type": "webview",
+          "id": "disasm.disasmPanel",
+          "name": "Disasm Panel"
         }
       ]
     },
-    "customEditors": [
+
+    "commands": [
       {
-        "viewType": "cdsDisasm.binEditor",
-        "displayName": "CDS Disassembler",
-        "selector": [
-          { "filenamePattern": "*.bin" }
-        ],
-        "priority": "default"
+        "command": "disasm.showPanel",
+        "title": "Show Disasm Panel"
       }
     ]
   },
-  "scripts": {
-    "compile": "tsc -p ./"
-  },
+
+"scripts": {
+  "vscode:prepublish": "npm run compile",
+  "compile": "tsc && npm run copy-html",
+  "copy-html": "node scripts/copy-html.js",
+  "watch": "tsc -watch -p ./"
+},
+
   "devDependencies": {
     "@types/node": "^20.3.1",
     "@types/vscode": "^1.107.0",
+    "@vscode/test-electron": "^2.3.0",
     "typescript": "^5.1.3"
   }
 }

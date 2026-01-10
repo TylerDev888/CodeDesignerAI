@@ -33,20 +33,21 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.activate = activate;
-exports.deactivate = deactivate;
+exports.DisasmPanelProvider = void 0;
 const vscode = __importStar(require("vscode"));
-const DisasmEditorProvider_1 = require("./providers/DisasmEditor/DisasmEditorProvider");
-const DisasmPanelProvider_1 = require("./providers/DisasmPanel/DisasmPanelProvider");
-function activate(context) {
-    // Custom editor
-    context.subscriptions.push(vscode.window.registerCustomEditorProvider('disasm.disasmEditor', new DisasmEditorProvider_1.DisasmEditorProvider(), { webviewOptions: { retainContextWhenHidden: true } }));
-    // Sidebar panel
-    context.subscriptions.push(vscode.window.registerWebviewViewProvider('disasm.disasmPanel', new DisasmPanelProvider_1.DisasmPanelProvider()));
-    // Command to show sidebar
-    context.subscriptions.push(vscode.commands.registerCommand('disasm.showPanel', () => {
-        vscode.commands.executeCommand('workbench.view.extension.disasmSidebar');
-    }));
+const BasePanelProvider_1 = require("../BaseProvider/BasePanelProvider");
+class DisasmPanelProvider extends BasePanelProvider_1.BasePanelProvider {
+    constructor() {
+        super('disasmPanel', 'DisasmPanelProvider.html', "DisasmPanel"); // HTML file
+    }
+    onDidResolveWebviewView(webviewView) {
+        // Listen to messages from the webview
+        webviewView.webview.onDidReceiveMessage(msg => {
+            if (msg.command === 'connect') {
+                vscode.window.showInformationMessage('Panel works!');
+            }
+        });
+    }
 }
-function deactivate() { }
-//# sourceMappingURL=extension.js.map
+exports.DisasmPanelProvider = DisasmPanelProvider;
+//# sourceMappingURL=DisasmPanelProvider.js.map

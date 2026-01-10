@@ -1,5 +1,11 @@
 # CodeDesignerAI VSCode [![CI](https://github.com/TylerDev888/CodeDesignerAI/actions/workflows/ci.yml/badge.svg)](https://github.com/TylerDev888/CodeDesignerAI/actions/workflows/ci.yml)
+CDS Assembler
 ![CodeDesigner screenshot](./Screenshot.png)
+
+Disasm
+![CodeDesigner screenshot](./Screenshot_2.png)
+![CodeDesigner screenshot](./Screenshot_3.png)
+![CodeDesigner screenshot](./Screenshot_4.png)
 
 ## Description
 A MIPS64 (PS2 Emotion Engine) assembler / disassembler with extended pseudo-commands and directives for custom CDS scripts. Used to create custom patches for the playstation 2. Make sure to use github co-pilot with this vs code extension. 

@@ -33,20 +33,30 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.activate = activate;
-exports.deactivate = deactivate;
-const vscode = __importStar(require("vscode"));
-const DisasmEditorProvider_1 = require("./providers/DisasmEditor/DisasmEditorProvider");
-const DisasmPanelProvider_1 = require("./providers/DisasmPanel/DisasmPanelProvider");
-function activate(context) {
-    // Custom editor
-    context.subscriptions.push(vscode.window.registerCustomEditorProvider('disasm.disasmEditor', new DisasmEditorProvider_1.DisasmEditorProvider(), { webviewOptions: { retainContextWhenHidden: true } }));
-    // Sidebar panel
-    context.subscriptions.push(vscode.window.registerWebviewViewProvider('disasm.disasmPanel', new DisasmPanelProvider_1.DisasmPanelProvider()));
-    // Command to show sidebar
-    context.subscriptions.push(vscode.commands.registerCommand('disasm.showPanel', () => {
-        vscode.commands.executeCommand('workbench.view.extension.disasmSidebar');
-    }));
+exports.DisasmEditorProvider = void 0;
+const fs = __importStar(require("fs"));
+const helpers_1 = require("../helpers");
+const BaseEditorProvider_1 = require("../BaseProvider/BaseEditorProvider");
+class DisasmEditorProvider extends BaseEditorProvider_1.BaseEditorProvider {
+    constructor() {
+        super('DisasmEditorProvider.html', "DisasmEditor");
+    }
+    async onDidResolveWebview(webviewPanel, document) {
+        fs.readFile(document.uri.fsPath, (err, data) => {
+            if (err) {
+                webviewPanel.webview.postMessage({
+                    type: 'error',
+                    message: err.message
+                });
+                return;
+            }
+            const rows = (0, helpers_1.disassemble)(data);
+            webviewPanel.webview.postMessage({
+                type: 'disasm',
+                rows
+            });
+        });
+    }
 }
-function deactivate() { }
-//# sourceMappingURL=extension.js.map
+exports.DisasmEditorProvider = DisasmEditorProvider;
+//# sourceMappingURL=DisasmEditorProvider.js.map

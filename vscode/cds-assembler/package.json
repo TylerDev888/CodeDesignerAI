@@ -3,7 +3,7 @@
   "displayName": "CDS Assembler",
   "description": "CDS Assembler sidebar panel with custom commands",
   "version": "0.0.1",
-  "publisher": "antix-fatality",
+  "publisher": "tylerdev888",
   "engines": {
   "vscode": "^1.107.0"
   },

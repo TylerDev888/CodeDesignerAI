@@ -1,0 +1,69 @@
+{
+  "name": "disasm",
+  "displayName": "Disassembler",
+  "description": "Binary disassembler for .bin files",
+  "version": "0.0.1",
+  "publisher": "tylerdev888",
+  "engines": { "vscode": "^1.107.0" },
+  "categories": ["Other"],
+  "main": "./out/extension.js",
+
+  "activationEvents": [
+    "onCustomEditor:disasm.disasmEditor",
+    "onCommand:disasm.showPanel"
+  ],
+
+  "contributes": {
+
+    "customEditors": [
+      {
+        "viewType": "disasm.disasmEditor",
+        "displayName": "Disassembler",
+        "selector": [
+          { "filenamePattern": "*.bin" }
+        ]
+      }
+    ],
+
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "disasmSidebar",
+          "title": "disasm",
+          "icon": "resources/cds-icon.svg"
+        }
+      ]
+    },
+
+    "views": {
+      "disasmSidebar": [
+        {
+          "type": "webview",
+          "id": "disasm.disasmPanel",
+          "name": "Disasm Panel"
+        }
+      ]
+    },
+
+    "commands": [
+      {
+        "command": "disasm.showPanel",
+        "title": "Show Disasm Panel"
+      }
+    ]
+  },
+
+"scripts": {
+  "vscode:prepublish": "npm run compile",
+  "compile": "tsc && npm run copy-html",
+  "copy-html": "node scripts/copy-html.js",
+  "watch": "tsc -watch -p ./"
+},
+
+  "devDependencies": {
+    "@types/node": "^20.3.1",
+    "@types/vscode": "^1.107.0",
+    "@vscode/test-electron": "^2.3.0",
+    "typescript": "^5.1.3"
+  }
+}

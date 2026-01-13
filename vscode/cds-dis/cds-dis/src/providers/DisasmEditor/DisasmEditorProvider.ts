@@ -1,7 +1,7 @@
 import * as vscode from "vscode";
 import * as fs from "fs";
-import { disassemble, analyzePointers } from "../../helpers";
 import { BaseEditorProvider } from "../BaseProvider/BaseEditorProvider";
+import { disassemble } from "../../mipsDisasm";
 
 /**
  * Allowed searchable fields in a disassembled instruction row
@@ -267,35 +267,35 @@ export class DisasmEditorProvider extends BaseEditorProvider {
     const startAddr = DisasmEditorProvider.BASE_ADDRESS + startOffset;
 
     const rows = disassemble(startAddr, slice);
-    const refs = analyzePointers(rows);
+    // const refs = analyzePointers(rows);
 
-    const refMap = new Map<number, any[]>();
-    for (const ref of refs) {
-      if (!refMap.has(ref.instrAddr)) {
-        refMap.set(ref.instrAddr, []);
-      }
-      refMap.get(ref.instrAddr)!.push(ref);
-    }
+    // const refMap = new Map<number, any[]>();
+    // for (const ref of refs) {
+    //   if (!refMap.has(ref.instrAddr)) {
+    //     refMap.set(ref.instrAddr, []);
+    //   }
+    //   refMap.get(ref.instrAddr)!.push(ref);
+    // }
 
-    for (const row of rows) {
-      const addr = parseInt(row.addr, 16);
-      const rowRefs = refMap.get(addr);
-      if (!rowRefs) continue;
+    // for (const row of rows) {
+    //   const addr = parseInt(row.addr, 16);
+    //   const rowRefs = refMap.get(addr);
+    //   if (!rowRefs) continue;
 
-      const annotations = rowRefs.map(ref => {
-        if (ref.targetAddr !== undefined) {
-          const addrStr = `0x${ref.targetAddr.toString(16).toUpperCase()}`;
-          return ref.isFunction
-            ? `; ptr to function at ${addrStr}`
-            : `; ptr [${addrStr}]`;
-        }
-        return `; ptr: ${ref.baseReg ?? '?'} (unresolved)`;
-      });
+    //   const annotations = rowRefs.map(ref => {
+    //     if (ref.targetAddr !== undefined) {
+    //       const addrStr = `0x${ref.targetAddr.toString(16).toUpperCase()}`;
+    //       return ref.isFunction
+    //         ? `; ptr to function at ${addrStr}`
+    //         : `; ptr [${addrStr}]`;
+    //     }
+    //     return `; ptr: ${ref.baseReg ?? '?'} (unresolved)`;
+    //   });
 
-      row.comment = row.comment
-        ? `${row.comment} ${annotations.join(', ')}`
-        : annotations.join(', ');
-    }
+    //   row.comment = row.comment
+    //     ? `${row.comment} ${annotations.join(', ')}`
+    //     : annotations.join(', ');
+    // }
 
     webviewPanel.webview.postMessage({
       type: "disasmPage",

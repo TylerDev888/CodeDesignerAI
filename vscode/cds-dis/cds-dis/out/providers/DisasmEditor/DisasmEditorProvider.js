@@ -35,8 +35,8 @@ var __importStar = (this && this.__importStar) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DisasmEditorProvider = void 0;
 const fs = __importStar(require("fs"));
-const helpers_1 = require("../../helpers");
 const BaseEditorProvider_1 = require("../BaseProvider/BaseEditorProvider");
+const mipsDisasm_1 = require("../../mipsDisasm");
 class DisasmEditorProvider extends BaseEditorProvider_1.BaseEditorProvider {
     static HEX_VIEW_SIZE = 0x30;
     static INSTRUCTION_SIZE = 4;
@@ -139,7 +139,7 @@ class DisasmEditorProvider extends BaseEditorProvider_1.BaseEditorProvider {
                 if (slice.length < DisasmEditorProvider.INSTRUCTION_SIZE)
                     break;
                 const address = DisasmEditorProvider.BASE_ADDRESS + offset;
-                const rows = (0, helpers_1.disassemble)(address, slice);
+                const rows = (0, mipsDisasm_1.disassemble)(address, slice);
                 if (rows.length === 0)
                     continue;
                 const row = rows[0];
@@ -223,33 +223,32 @@ class DisasmEditorProvider extends BaseEditorProvider_1.BaseEditorProvider {
         const endOffset = Math.min(fileData.length, startOffset + DisasmEditorProvider.PAGE_SIZE * DisasmEditorProvider.INSTRUCTION_SIZE);
         const slice = fileData.slice(startOffset, endOffset);
         const startAddr = DisasmEditorProvider.BASE_ADDRESS + startOffset;
-        const rows = (0, helpers_1.disassemble)(startAddr, slice);
-        const refs = (0, helpers_1.analyzePointers)(rows);
-        const refMap = new Map();
-        for (const ref of refs) {
-            if (!refMap.has(ref.instrAddr)) {
-                refMap.set(ref.instrAddr, []);
-            }
-            refMap.get(ref.instrAddr).push(ref);
-        }
-        for (const row of rows) {
-            const addr = parseInt(row.addr, 16);
-            const rowRefs = refMap.get(addr);
-            if (!rowRefs)
-                continue;
-            const annotations = rowRefs.map(ref => {
-                if (ref.targetAddr !== undefined) {
-                    const addrStr = `0x${ref.targetAddr.toString(16).toUpperCase()}`;
-                    return ref.isFunction
-                        ? `; ptr to function at ${addrStr}`
-                        : `; ptr [${addrStr}]`;
-                }
-                return `; ptr: ${ref.baseReg ?? '?'} (unresolved)`;
-            });
-            row.comment = row.comment
-                ? `${row.comment} ${annotations.join(', ')}`
-                : annotations.join(', ');
-        }
+        const rows = (0, mipsDisasm_1.disassemble)(startAddr, slice);
+        // const refs = analyzePointers(rows);
+        // const refMap = new Map<number, any[]>();
+        // for (const ref of refs) {
+        //   if (!refMap.has(ref.instrAddr)) {
+        //     refMap.set(ref.instrAddr, []);
+        //   }
+        //   refMap.get(ref.instrAddr)!.push(ref);
+        // }
+        // for (const row of rows) {
+        //   const addr = parseInt(row.addr, 16);
+        //   const rowRefs = refMap.get(addr);
+        //   if (!rowRefs) continue;
+        //   const annotations = rowRefs.map(ref => {
+        //     if (ref.targetAddr !== undefined) {
+        //       const addrStr = `0x${ref.targetAddr.toString(16).toUpperCase()}`;
+        //       return ref.isFunction
+        //         ? `; ptr to function at ${addrStr}`
+        //         : `; ptr [${addrStr}]`;
+        //     }
+        //     return `; ptr: ${ref.baseReg ?? '?'} (unresolved)`;
+        //   });
+        //   row.comment = row.comment
+        //     ? `${row.comment} ${annotations.join(', ')}`
+        //     : annotations.join(', ');
+        // }
         webviewPanel.webview.postMessage({
             type: "disasmPage",
             rows,
